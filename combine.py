@@ -2,7 +2,6 @@ import os
 import sys
 import time
 import array
-import time
 
 # --- Examples ---
 
@@ -121,8 +120,10 @@ def generate_steps(battery_power, last_steps):
             seconds += three
         else:
             seconds += one
-            
-    print(f'This would take about {seconds:.1f} seconds or {(seconds / 60):.2f} minutes to complete\n')
+    hours = int(seconds / 3600)
+    minutes = int((seconds % 3600) / 60)
+    remaining_seconds = int(seconds % 60)
+    print(f'This would take about {hours} hours {minutes} minutes {remaining_seconds} seconds to complete\n')
     return steps
 
 def do_the_loop(wait, battery_power, last_steps):
